@@ -10,7 +10,7 @@ This week begins **Phase 3 — Deep Learning & Applied Project**, a capstone-sty
 | Day | Topic | Notebook | Status |
 |:---:|-------|----------|:------:|
 | 1 | Sprint 1 Kickoff & Baseline Model | [`sprint1_baseline.ipynb`](./Day1/sprint1_baseline.ipynb) | ✅ |
-| 2 | Activations & Forward Pass (Neural Network Foundations) | — | 🔲 |
+| 2 | Activations & Forward Pass (Neural Network Foundations) | [`Activations_the-Forward-Pass.ipynb`](./Day2/Activations_the-Forward-Pass.ipynb) | ✅ |
 | 3 | Training Mechanics: Loss Curves, Learning Rate, Training Loop | — | 🔲 |
 | 4 | Keras Neural Network: Compile/Fit/Evaluate, Dropout, Batch-Norm | — | 🔲 |
 | 5 | Tuning: EarlyStopping, Metric Comparison vs Baseline, Retrospective | — | 🔲 |
@@ -22,8 +22,8 @@ This week begins **Phase 3 — Deep Learning & Applied Project**, a capstone-sty
 ### [Day 1 — Sprint 1 Kickoff & Baseline Model](./Day1/README.md)
 Completed the **Sprint 1 planning** and built a **complete baseline ML pipeline** on the processed Heart Disease dataset (918 patients × 14 columns). Loaded the dataset, validated the schema (13 numeric features, 1 categorical, no missing values), and performed comprehensive EDA — statistical summaries, target distribution (55.3% positive / 44.7% negative), univariate analysis, IQR outlier detection, and correlation analysis. Assembled a **leakage-free preprocessing pipeline** using `ColumnTransformer` (median imputation + `StandardScaler` for numerics, most-frequent imputation + `OneHotEncoder` for categoricals) fitted on training data only. Trained a **Logistic Regression** baseline classifier and evaluated it with Accuracy, F1-Score, ROC-AUC, and a confusion matrix. These baseline scores establish the **absolute benchmark** that every neural network architecture in subsequent days must outperform. The notebook also defines the Sprint 1 backlog (5 tasks with acceptance criteria), sprint events timeline (Sprint Planning, Daily Stand-ups, Mentor Review, Sprint Review, Retrospective), and the full deliverables checklist for the sprint.
 
-### Day 2 — Activations & Forward Pass (Neural Network Foundations)
-🔲 *Planned — not yet completed.*
+### [Day 2 — Activations & Forward Pass (Neural Network Foundations)](./Day2/README.md)
+Completed a **hands-on lab** on neural network foundations — activation functions and the forward pass. Plotted and compared **ReLU, Sigmoid, Tanh, and Softmax** with their derivatives, explaining why non-linear activations are essential for deep networks. Selected **Sigmoid output + Binary Cross-Entropy loss** for the binary heart-disease classification task, with mathematical justification (the gradient simplifies to $\hat{y} - y$). Implemented a **complete forward pass from scratch in NumPy** using a 2-layer network (4 inputs → 3 hidden neurons with ReLU → 1 output neuron with Sigmoid), tracking tensor shapes at every step. Computed the BCE loss with numerical stability (clipping) and verified it analytically. Key takeaway: activations are not optional — without them, depth is meaningless; ReLU is the default for hidden layers; shape tracking is essential.
 
 ### Day 3 — Training Mechanics: Loss Curves, Learning Rate, Training Loop
 🔲 *Planned — not yet completed.*
@@ -52,6 +52,15 @@ Completed the **Sprint 1 planning** and built a **complete baseline ML pipeline*
 | **OneHotEncoder** | 1 | Categorical feature encoding |
 | **Logistic Regression Baseline** | 1 | Binary classification with Accuracy, F1, ROC-AUC evaluation |
 | **Confusion Matrix** | 1 | Visual heatmap of TP/TN/FP/FN |
+| **ReLU Activation** | 2 | Hidden layer activation — zero for negatives, fast and sparse |
+| **Sigmoid Activation** | 2 | Output activation for binary classification — probability output |
+| **Tanh Activation** | 2 | Zero-centered hidden activation alternative |
+| **Softmax Activation** | 2 | Multi-class output normalization |
+| **Activation Derivatives** | 2 | Required for backpropagation gradient computation |
+| **Binary Cross-Entropy** | 2 | Standard loss function for binary classification |
+| **NumPy Forward Pass** | 2 | Manual implementation of neural network computation |
+| **Shape Tracking** | 2 | Verifying tensor dimensions at each computation step |
+| **Numerical Stability** | 2 | Clipping predictions to avoid log(0) errors |
 
 ---
 
@@ -62,7 +71,9 @@ BinX_Week_06/
 ├── Day1/
 │   ├── sprint1_baseline.ipynb
 │   └── README.md
-├── Day2/                          # (planned)
+├── Day2/
+│   ├── Activations_the-Forward-Pass.ipynb
+│   └── README.md
 ├── Day3/                          # (planned)
 ├── Day4/                          # (planned)
 ├── Day5/                          # (planned)
