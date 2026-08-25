@@ -11,7 +11,7 @@ This week begins **Phase 3 — Deep Learning & Applied Project**, a capstone-sty
 |:---:|-------|----------|:------:|
 | 1 | Sprint 1 Kickoff & Baseline Model | [`sprint1_baseline.ipynb`](./Day1/sprint1_baseline.ipynb) | ✅ |
 | 2 | Activations & Forward Pass (Neural Network Foundations) | [`Activations_the-Forward-Pass.ipynb`](./Day2/Activations_the-Forward-Pass.ipynb) | ✅ |
-| 3 | Training Mechanics: Loss Curves, Learning Rate, Training Loop | — | 🔲 |
+| 3 | Training Mechanics: Loss Curves, Learning Rate, Training Loop | [`Backpropagation_Gradient-Descent.ipynb`](./Day3/Backpropagation_Gradient-Descent.ipynb) | ✅ |
 | 4 | Keras Neural Network: Compile/Fit/Evaluate, Dropout, Batch-Norm | — | 🔲 |
 | 5 | Tuning: EarlyStopping, Metric Comparison vs Baseline, Retrospective | — | 🔲 |
 
@@ -25,8 +25,8 @@ Completed the **Sprint 1 planning** and built a **complete baseline ML pipeline*
 ### [Day 2 — Activations & Forward Pass (Neural Network Foundations)](./Day2/README.md)
 Completed a **hands-on lab** on neural network foundations — activation functions and the forward pass. Plotted and compared **ReLU, Sigmoid, Tanh, and Softmax** with their derivatives, explaining why non-linear activations are essential for deep networks. Selected **Sigmoid output + Binary Cross-Entropy loss** for the binary heart-disease classification task, with mathematical justification (the gradient simplifies to $\hat{y} - y$). Implemented a **complete forward pass from scratch in NumPy** using a 2-layer network (4 inputs → 3 hidden neurons with ReLU → 1 output neuron with Sigmoid), tracking tensor shapes at every step. Computed the BCE loss with numerical stability (clipping) and verified it analytically. Key takeaway: activations are not optional — without them, depth is meaningless; ReLU is the default for hidden layers; shape tracking is essential.
 
-### Day 3 — Training Mechanics: Loss Curves, Learning Rate, Training Loop
-🔲 *Planned — not yet completed.*
+### [Day 3 — Training Mechanics: Loss Curves, Learning Rate, Training Loop](./Day3/README.md)
+Completed a **hands-on lab** on the training loop, backpropagation, and learning rate effects. Described the **four-step training loop** (forward → loss → backprop → update) in a Markdown cell with a visual diagram. Implemented **backpropagation from scratch in NumPy** for the same 2-layer network from Day 2 (4 inputs → 3 hidden ReLU → 1 output Sigmoid), computing all gradients via the **chain rule**. Trained the network at **three learning rates** (0.5 too high, 0.0001 too low, 0.01 good) and plotted loss curves — demonstrating that too high causes divergence, too low causes slow training, and just right gives smooth convergence. Explained **what backpropagation computes** (gradients of the loss w.r.t. every weight) and **why the chain rule is involved** (the loss is a composition of nested functions). Opened a pull request for the mid-sprint Mentor Code & Notebook Review. Key insight: the learning rate is the single most important hyperparameter; start with Adam at lr=0.001.
 
 ### Day 4 — Keras Neural Network: Compile/Fit/Evaluate, Dropout, Batch-Norm
 🔲 *Planned — not yet completed.*
@@ -61,6 +61,14 @@ Completed a **hands-on lab** on neural network foundations — activation functi
 | **NumPy Forward Pass** | 2 | Manual implementation of neural network computation |
 | **Shape Tracking** | 2 | Verifying tensor dimensions at each computation step |
 | **Numerical Stability** | 2 | Clipping predictions to avoid log(0) errors |
+| **Training Loop** | 3 | Forward → Loss → Backprop → Update — the heartbeat of every neural network |
+| **Gradient Descent** | 3 | Moving weights opposite to the gradient to reduce loss |
+| **Learning Rate** | 3 | Step size — most important hyperparameter; too high diverges, too low stalls |
+| **Backpropagation** | 3 | Computing gradients efficiently via the chain rule |
+| **Chain Rule** | 3 | Decomposing the gradient of a composition into local derivatives |
+| **NumPy Backprop** | 3 | Manual implementation of forward + backward pass for a 2-layer network |
+| **Loss Curves** | 3 | Visual diagnosis of training behavior — convergence, divergence, or slowness |
+| **Mentor Review PR** | 3 | Mid-sprint pull request for structured code and notebook review |
 
 ---
 
@@ -74,7 +82,9 @@ BinX_Week_06/
 ├── Day2/
 │   ├── Activations_the-Forward-Pass.ipynb
 │   └── README.md
-├── Day3/                          # (planned)
+├── Day3/
+│   ├── Backpropagation_Gradient-Descent.ipynb
+│   └── README.md
 ├── Day4/                          # (planned)
 ├── Day5/                          # (planned)
 └── README.md                      ← You are here
