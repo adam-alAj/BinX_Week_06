@@ -12,7 +12,7 @@ This week begins **Phase 3 — Deep Learning & Applied Project**, a capstone-sty
 | 1 | Sprint 1 Kickoff & Baseline Model | [`sprint1_baseline.ipynb`](./Day1/sprint1_baseline.ipynb) | ✅ |
 | 2 | Activations & Forward Pass (Neural Network Foundations) | [`Activations_the-Forward-Pass.ipynb`](./Day2/Activations_the-Forward-Pass.ipynb) | ✅ |
 | 3 | Training Mechanics: Loss Curves, Learning Rate, Training Loop | [`Backpropagation_Gradient-Descent.ipynb`](./Day3/Backpropagation_Gradient-Descent.ipynb) | ✅ |
-| 4 | Keras Neural Network: Compile/Fit/Evaluate, Dropout, Batch-Norm | — | 🔲 |
+| 4 | Keras Neural Network: Compile/Fit/Evaluate, Dropout, Batch-Norm | [`Training_a_Network_in_Keras.ipynb`](./Day4/Training_a_Network_in_Keras.ipynb) | ✅ |
 | 5 | Tuning: EarlyStopping, Metric Comparison vs Baseline, Retrospective | — | 🔲 |
 
 ---
@@ -28,8 +28,8 @@ Completed a **hands-on lab** on neural network foundations — activation functi
 ### [Day 3 — Training Mechanics: Loss Curves, Learning Rate, Training Loop](./Day3/README.md)
 Completed a **hands-on lab** on the training loop, backpropagation, and learning rate effects. Described the **four-step training loop** (forward → loss → backprop → update) in a Markdown cell with a visual diagram. Implemented **backpropagation from scratch in NumPy** for the same 2-layer network from Day 2 (4 inputs → 3 hidden ReLU → 1 output Sigmoid), computing all gradients via the **chain rule**. Trained the network at **three learning rates** (0.5 too high, 0.0001 too low, 0.01 good) and plotted loss curves — demonstrating that too high causes divergence, too low causes slow training, and just right gives smooth convergence. Explained **what backpropagation computes** (gradients of the loss w.r.t. every weight) and **why the chain rule is involved** (the loss is a composition of nested functions). Opened a pull request for the mid-sprint Mentor Code & Notebook Review. Key insight: the learning rate is the single most important hyperparameter; start with Adam at lr=0.001.
 
-### Day 4 — Keras Neural Network: Compile/Fit/Evaluate, Dropout, Batch-Norm
-🔲 *Planned — not yet completed.*
+### [Day 4 — Keras Neural Network: Compile/Fit/Evaluate, Dropout, Batch-Norm](./Day4/README.md)
+Completed the **hands-on lab** on building and training a neural network using TensorFlow/Keras. Built a **baseline Sequential network** with two Dense hidden layers (64→32 neurons, ReLU) and a Sigmoid output layer for binary classification on the Heart Disease dataset. Compiled with Adam optimizer, binary cross-entropy loss, and accuracy metric; trained for 50 epochs with `validation_split=0.2`. Plotted training vs validation loss and accuracy curves, diagnosing **overfitting** from the widening gap between curves. Built an **enhanced model** incorporating `BatchNormalization()` after each Dense layer and `Dropout(0.3)` to regularize training. Overlaid the enhanced model's curves against the baseline to demonstrate stabilized training and reduced overfitting. Evaluated the best model on the unseen test set and compared results against the Day 1 Logistic Regression baseline (Accuracy: 0.8533, F1: 0.8657, ROC-AUC: 0.9159).
 
 ### Day 5 — Tuning: EarlyStopping, Metric Comparison vs Baseline, Retrospective
 🔲 *Planned — not yet completed.*
@@ -69,6 +69,20 @@ Completed a **hands-on lab** on the training loop, backpropagation, and learning
 | **NumPy Backprop** | 3 | Manual implementation of forward + backward pass for a 2-layer network |
 | **Loss Curves** | 3 | Visual diagnosis of training behavior — convergence, divergence, or slowness |
 | **Mentor Review PR** | 3 | Mid-sprint pull request for structured code and notebook review |
+| **Keras Sequential API** | 4 | Building layered neural networks by stacking Dense layers |
+| **Dense Layers** | 4 | Fully connected layers with learnable weights and biases |
+| **ReLU Activation** | 4 | Default hidden layer activation — fast, avoids vanishing gradient |
+| **Sigmoid Activation** | 4 | Output activation for binary classification — probability output |
+| **Adam Optimizer** | 4 | Adaptive learning rate optimizer — the default recommendation |
+| **Binary Cross-Entropy** | 4 | Standard loss function paired with Sigmoid for binary classification |
+| **Model Compilation** | 4 | `model.compile()` with optimizer, loss, and metrics |
+| **Model Training** | 4 | `model.fit()` with validation split and epoch-based training |
+| **Training History** | 4 | Storing and visualizing loss/accuracy curves for fit diagnosis |
+| **Overfitting Diagnosis** | 4 | Identifying overfitting from diverging train/validation curves |
+| **Batch Normalization** | 4 | Normalizing activations within mini-batches to stabilize training |
+| **Dropout Regularization** | 4 | Randomly deactivating neurons to prevent co-adaptation |
+| **Model Evaluation** | 4 | `model.evaluate()` on unseen test data |
+| **Baseline Comparison** | 4 | Structured comparison of deep learning vs traditional ML baseline |
 
 ---
 
@@ -85,7 +99,9 @@ BinX_Week_06/
 ├── Day3/
 │   ├── Backpropagation_Gradient-Descent.ipynb
 │   └── README.md
-├── Day4/                          # (planned)
+├── Day4/
+│   ├── Training_a_Network_in_Keras.ipynb
+│   └── README.md
 ├── Day5/                          # (planned)
 └── README.md                      ← You are here
 ```
