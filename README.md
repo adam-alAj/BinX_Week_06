@@ -13,7 +13,7 @@ This week begins **Phase 3 — Deep Learning & Applied Project**, a capstone-sty
 | 2 | Activations & Forward Pass (Neural Network Foundations) | [`Activations_the-Forward-Pass.ipynb`](./Day2/Activations_the-Forward-Pass.ipynb) | ✅ |
 | 3 | Training Mechanics: Loss Curves, Learning Rate, Training Loop | [`Backpropagation_Gradient-Descent.ipynb`](./Day3/Backpropagation_Gradient-Descent.ipynb) | ✅ |
 | 4 | Keras Neural Network: Compile/Fit/Evaluate, Dropout, Batch-Norm | [`Training_a_Network_in_Keras.ipynb`](./Day4/Training_a_Network_in_Keras.ipynb) | ✅ |
-| 5 | Tuning: EarlyStopping, Metric Comparison vs Baseline, Retrospective | — | 🔲 |
+| 5 | Tuning: EarlyStopping, Metric Comparison vs Baseline, Retrospective | [`Evaluation_Sprint-Review.ipynb`](./Day5/Evaluation_Sprint-Review.ipynb) | ✅ |
 
 ---
 
@@ -31,8 +31,8 @@ Completed a **hands-on lab** on the training loop, backpropagation, and learning
 ### [Day 4 — Keras Neural Network: Compile/Fit/Evaluate, Dropout, Batch-Norm](./Day4/README.md)
 Completed the **hands-on lab** on building and training a neural network using TensorFlow/Keras. Built a **baseline Sequential network** with two Dense hidden layers (64→32 neurons, ReLU) and a Sigmoid output layer for binary classification on the Heart Disease dataset. Compiled with Adam optimizer, binary cross-entropy loss, and accuracy metric; trained for 50 epochs with `validation_split=0.2`. Plotted training vs validation loss and accuracy curves, diagnosing **overfitting** from the widening gap between curves. Built an **enhanced model** incorporating `BatchNormalization()` after each Dense layer and `Dropout(0.3)` to regularize training. Overlaid the enhanced model's curves against the baseline to demonstrate stabilized training and reduced overfitting. Evaluated the best model on the unseen test set and compared results against the Day 1 Logistic Regression baseline (Accuracy: 0.8533, F1: 0.8657, ROC-AUC: 0.9159).
 
-### Day 5 — Tuning: EarlyStopping, Metric Comparison vs Baseline, Retrospective
-🔲 *Planned — not yet completed.*
+### [Day 5 — Tuning: EarlyStopping, Metric Comparison vs Baseline, Retrospective](./Day5/README.md)
+Completed the **Sprint 1 close-out** — systematic hyperparameter tuning, callbacks, final evaluation, and retrospective. Applied disciplined **one-variable-at-a-time tuning** across 4 hyperparameters (learning rate, architecture, dropout rate, batch size) with 18+ experiments recorded in a consolidated experiment log. Selected the best learning rate (0.0005), architecture ([128, 64, 32]), dropout rate (0.2), and batch size (32). Implemented **EarlyStopping** (patience=5, restore_best_weights=True) and **ModelCheckpoint** (save_best_only=True) as practical training best practices. Evaluated the final tuned model on the held-out test set (Accuracy: 0.8370, F1: 0.8485, ROC-AUC: 0.9076) and compared against the Day 1 baseline (0.8533, 0.8657, 0.9159) and Day 4 enhanced model (0.8261, 0.8447, 0.8991). The tuned neural network did not beat the baseline on any metric — an honest result demonstrating that more complex models do not always outperform simpler baselines on small tabular datasets. All 10 sprint acceptance criteria passed. Sprint retrospective identified key improvements for Sprint 2: implement a structured experiment tracker, explore feature engineering, use cross-validation, expand the tuning search space, and add learning rate scheduling.
 
 ---
 
@@ -83,6 +83,16 @@ Completed the **hands-on lab** on building and training a neural network using T
 | **Dropout Regularization** | 4 | Randomly deactivating neurons to prevent co-adaptation |
 | **Model Evaluation** | 4 | `model.evaluate()` on unseen test data |
 | **Baseline Comparison** | 4 | Structured comparison of deep learning vs traditional ML baseline |
+| **One-Variable-at-a-Time Tuning** | 5 | Disciplined hyperparameter search — change one variable, record impact |
+| **Learning Rate Tuning** | 5 | Testing multiple learning rates to find optimal convergence speed |
+| **Architecture Tuning** | 5 | Testing different hidden layer configurations to find optimal capacity |
+| **Dropout Tuning** | 5 | Testing different dropout rates to find optimal regularization |
+| **Batch Size Tuning** | 5 | Testing different batch sizes to find optimal gradient noise |
+| **EarlyStopping** | 5 | Preventing overfitting with patience-based early termination |
+| **ModelCheckpoint** | 5 | Persisting the best model weights during training |
+| **Experiment Logging** | 5 | Consolidating all experiments in a single summary table |
+| **Sprint Review** | 5 | Documenting completion status, evidence, and acceptance criteria |
+| **Sprint Retrospective** | 5 | Reflecting on what went well and what could be improved |
 
 ---
 
@@ -102,7 +112,10 @@ BinX_Week_06/
 ├── Day4/
 │   ├── Training_a_Network_in_Keras.ipynb
 │   └── README.md
-├── Day5/                          # (planned)
+├── Day5/
+│   ├── Evaluation_Sprint-Review.ipynb
+│   ├── best_model.keras
+│   └── README.md
 └── README.md                      ← You are here
 ```
 
