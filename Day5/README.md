@@ -35,11 +35,11 @@ The Day 4 neural network did not beat the baseline. Today's goal was to systemat
 
 - **Tuning Strategy:** Applied disciplined one-variable-at-a-time tuning across four hyperparameters in priority order: Learning Rate → Architecture → Dropout Rate → Batch Size. All experiments used 50 epochs and validation_split=0.2 for fair comparison.
 
-- **Experiment 1 — Learning Rate:** Tested 5 learning rates [0.0001, 0.0005, 0.001, 0.005, 0.01] with fixed architecture [64, 32], dropout=0.3, batch_size=32. Selected **lr=0.0005** based on best validation loss (0.4229).
+- **Experiment 1 — Learning Rate:** Tested 5 learning rates [0.0001, 0.0005, 0.001, 0.005, 0.01] with fixed architecture [64, 32], dropout=0.3, batch_size=32. Selected **lr=0.001** based on best validation loss (0.4385).
 
-- **Experiment 2 — Network Architecture:** Tested 4 architectures with the best learning rate: [32], [64, 32], [128, 64], [128, 64, 32]. Selected **[128, 64, 32]** as the best configuration.
+- **Experiment 2 — Network Architecture:** Tested 4 architectures with the best learning rate: [32], [64, 32], [128, 64], [128, 64, 32]. Selected **Baseline [64, 32]** as the best configuration (val_loss=0.4467).
 
-- **Experiment 3 — Dropout Rate:** Tested dropout values [0.0, 0.2, 0.3, 0.4, 0.5] with the best architecture and learning rate. Selected **dropout=0.2** as the best value.
+- **Experiment 3 — Dropout Rate:** Tested dropout values [0.0, 0.2, 0.3, 0.4, 0.5] with the best architecture and learning rate. Selected **dropout=0.5** as the best value.
 
 - **Experiment 4 — Batch Size:** Tested batch sizes [16, 32, 64, 128] with the best configuration from previous experiments. Selected **batch_size=32**.
 
@@ -49,7 +49,7 @@ The Day 4 neural network did not beat the baseline. Today's goal was to systemat
 
 - **ModelCheckpoint Implementation:** Applied `ModelCheckpoint('best_model.keras', monitor='val_loss', save_best_only=True)` to persist the best model during training.
 
-- **Final Model Training & Evaluation:** Trained the final tuned model with both callbacks and evaluated on the held-out test set.
+- **Final Model Training & Evaluation:** Trained the final tuned model with both callbacks (EarlyStopping + ModelCheckpoint) and evaluated on the held-out test set. The model trained for 21 epochs before EarlyStopping triggered (best epoch=21, best val_loss=0.4256).
 
 - **Model Comparison:** Compared the final tuned neural network against both the Day 1 Logistic Regression baseline and the Day 4 enhanced model:
 
@@ -57,13 +57,13 @@ The Day 4 neural network did not beat the baseline. Today's goal was to systemat
 |:------|:---------|:---------|:--------|
 | Day 1 Baseline (Logistic Regression) | 0.8533 | 0.8657 | 0.9159 |
 | Day 4 Neural Network (Enhanced) | 0.8261 | 0.8447 | 0.8991 |
-| Day 5 Tuned Neural Network | 0.8370 | 0.8485 | 0.9076 |
+| Day 5 Tuned Neural Network | 0.8152 | 0.8426 | 0.9051 |
 
 - **Sprint 1 Acceptance Criteria:** Evaluated against 10 acceptance criteria — all 10/10 PASSED.
 
 - **Sprint 1 Retrospective:** Documented what went well (baseline-first approach, leakage-free preprocessing, systematic tuning, callbacks, reproducibility) and what could be improved (NN did not beat baseline, limited feature engineering, no cross-validation, narrow tuning space, no learning rate scheduling).
 
-- **Key Insight:** The neural network did not beat the Logistic Regression baseline on any metric after extensive tuning. This demonstrates that more complex models do not always outperform simpler baselines, especially on small tabular datasets (918 samples, 15 features).
+- **Key Insight:** The neural network did not beat the Logistic Regression baseline on any metric after extensive tuning. The final tuned model (Accuracy: 0.8152, F1: 0.8426, ROC-AUC: 0.9051) underperformed the baseline (0.8533, 0.8657, 0.9159). This demonstrates that more complex models do not always outperform simpler baselines, especially on small tabular datasets (918 samples, 15 features).
 
 ---
 
